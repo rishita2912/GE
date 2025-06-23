@@ -1,0 +1,30 @@
+//To find the maximum number from the list of integers.
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int findMax(const vector<int> nums)
+{
+    if(nums.empty())
+    {
+        cout<<"The list is empty."<<endl;
+        return -1;
+        
+    }
+    int maxVal = nums[0];
+    for(int i = 1; i<nums.size(); i++)
+    {
+        if(maxVal<nums[i])
+        maxVal = nums[i];
+    }
+    return maxVal;
+}
+int main()
+{
+    vector<int>number = {12,34,56,64,10};
+    int Result = findMax(number);
+    if(!number.empty())
+    cout<<"Maximum number is:"<<Result;
+    return 0;
+}
