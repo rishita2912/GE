@@ -1,0 +1,41 @@
+//To find the second largest number in the array
+#include <iostream>
+#include <vector>
+#include <limits.h>  // for INT_MIN
+using namespace std;
+
+int findSecondLargest(const vector<int>& nums) {
+    if (nums.size() < 2) {
+        cout << "Array must have at least two elements." << endl;
+        return -1; // Error indicator
+    }
+
+    int first = INT_MIN, second = INT_MIN;
+
+    for (int num : nums) {
+        if (num > first) {
+            second = first;
+            first = num;
+        } else if (num > second && num < first) {
+            second = num;
+        }
+    }
+
+    if (second == INT_MIN) {
+        cout << "No second largest element (all elements may be equal)." << endl;
+        return -1;
+    }
+
+    return second;
+}
+
+int main() {
+    vector<int> arr = {12, 35, 1, 10, 34, 1};
+
+    int secondLargest = findSecondLargest(arr);
+    if (secondLargest != -1)
+        cout << "Second largest element is: " << secondLargest << endl;
+
+    return 0;
+}
+
